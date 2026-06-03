@@ -1,63 +1,59 @@
-# Millions of Realistic passwords
+# Millions-of-Realistic-passwords-Combinations
 
 ```markdown
-<div align="center">
-  <img src="https://img.shields.io/badge/Status-Production_Ready-brightgreen?style=for-the-badge" alt="Status">
-  <img src="https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Purpose-Academic_Research-informational?style=for-the-badge" alt="Purpose">
-  <img src="https://img.shields.io/badge/License-Educational_Only-orange?style=for-the-badge" alt="License">
-  
-  <h1>🛡️ Realistic Human Password Generator (RHPG)</h1>
-  
-  <p>
-    <strong>High-Scalable Synthetic Dataset Generator</strong><br>
-    Membangun dataset password realistis berbasis perilaku kognitif manusia untuk keperluan riset keamanan siber.
-  </p>
-</div>
+# 🛡️ Realistic Human Password Generator (RHPG)
+
+![Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![Purpose](https://img.shields.io/badge/Purpose-Academic_Research-informational?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Educational_Only-orange?style=for-the-badge)
+
+> **High-Scalable Synthetic Dataset Generator**  
+> Building a realistic password dataset based on human cognitive behavior for cybersecurity research purposes.
 
 ---
 
-## 📖 Daftar Isi
-- [📍 Latar Belakang](#-latar-belakang)
-- [🧠 Mengapa "Realistis"?](#-mengapa-realistis)
-- [⚙️ Arsitektur & Fitur Unggulan](#-arsitektur--fitur-unggulan)
-- [🔬 15 Pola Perilaku Manusia](#-15-pola-perilaku-manusia)
-- [🚀 Instalasi & Penggunaan](#-instalasi--penggunaan)
-- [📊 Performa & Benchmark](#-performa--benchmark)
-- [📚 Landasan Akademis](#-landasan-akademis)
+## 📖 Table of Contents
+- [📍 Background](#-background)
+- [🧠 Why "Realistic"?](#-why-realistic)
+- [⚙️ Architecture & Key Features](#-architecture--key-features)
+- [🔬 15 Human Behavior Patterns](#-15-human-behavior-patterns)
+- [🚀 Installation & Usage](#-installation--usage)
+- [📊 Performance & Benchmark](#-performance--benchmark)
+- [📚 Academic Foundations](#-academic-foundations)
 - [⚠️ Disclaimer](#-disclaimer)
 
 ---
 
-## 📍 Latar Belakang
+## 📍 Background
 
-Menguji kekuatan algoritma *password cracking* (seperti Hashcat atau John the Ripper) membutuhkan dataset yang merepresentasikan bagaimana manusia membangun password. 
+Testing the strength of password cracking algorithms (like Hashcat or John the Ripper) requires a dataset that represents how humans actually construct passwords. 
 
-Generator acak standar (`random_string()`) menghasilkan entropi tinggi seperti `xK9$mPq2`, yang **tidak pernah** digunakan oleh pengguna biasa. RHPG hadir untuk menjembatani kesenjangan ini dengan memodelkan **bias kognitif** manusia, menghasilkan miliaran password sintetis yang memiliki distribusi statistik mendekati basis data kebocoran dunia nyata (seperti *RockYou* atau *Breached* databases).
+Standard random generators (`random_string()`) produce high-entropy strings like `xK9$mPq2`, which are **never** used by average users. RHPG bridges this gap by modeling human **cognitive bias**, generating billions of synthetic passwords with a statistical distribution closely resembling real-world breach databases (such as *RockYou*).
 
 ---
 
-## 🧠 Mengapa "Realistis"?
+## 🧠 Why "Realistic"?
 
-Password yang dibuat manusia tidak acak. Mereka mengikuti heuristik mental tertentu untuk mengingatnya. RHPG mensimulasikan 3 pilar utama kebiasaan manusia:
+Human-created passwords are not random. They follow specific mental heuristics to make them memorable. RHPG simulates the 3 main pillars of human habits:
 
-1. **Ketergantungan Kamus (*Dictionary Dependency*)**
-   Manusia memilih kata yang familiar: `dragon`, `cinta`, `sunshine`.
-2. **Transformasi Prediktabel (*Mangling*)**
-   Untuk memenuhi syarat keamanan, manusia melakukan modifikasi minimal:
+1. **Dictionary Dependency**
+   Humans choose familiar words: `dragon`, `love`, `sunshine`.
+2. **Predictable Mangling**
+   To meet security requirements, humans make minimal modifications:
    - *Capitalization*: `Dragon`
    - *Leet Speak*: `dr4g0n`
    - *Appending*: `dragon123`, `dragon!`
-3. **Konteks Personal (*Contextual Anchoring*)**
-   Penggunaan informasi yang mudah diingat: Nama (`john`), Tahun (`1998`), atau pola keyboard (`qwerty`).
+3. **Contextual Anchoring**
+   Using easily remembered information: Names (`john`), Years (`1998`), or keyboard patterns (`qwerty`).
 
-> **Note:** Generator ini dirancang untuk menghasilkan dataset murni sintetis. Tidak ada password asli yang dicuri atau di-hardcode di dalamnya.
+> **Note:** This generator is designed to produce purely synthetic datasets. No real leaked passwords are stolen or hardcoded within it.
 
 ---
 
-## ⚙️ Arsitektur & Fitur Unggulan
+## ⚙️ Architecture & Key Features
 
-RHPG dibangun dengan arsitektur *streaming pipeline* yang mampu menangani skala miliaran record tanpa *Out of Memory* (OOM).
+RHPG is built on a *streaming pipeline* architecture capable of handling billions of records without triggering *Out of Memory* (OOM) errors.
 
 ```text
 ┌──────────────┐     ┌─────────────────┐     ┌───────────────────┐     ┌──────────────┐
@@ -71,120 +67,120 @@ RHPG dibangun dengan arsitektur *streaming pipeline* yang mampu menangani skala 
                                               └────────────────┘
 ```
 
-### Fitur Sistem:
-- **🎯 Probabilistic Pattern Modeling:** Setiap pola memiliki bobot persentase berdasarkan riset keamanan (e.g., pola `kata+angka` memiliki peluang 25% untuk muncul).
-- **🌸 Bloom Filter Deduplication:** Menggunakan algoritma probabilitas ruang yang sangat efisien. Mampu mengecek miliaran password duplikat hanya dengan memakan ruang ~1.8GB RAM/Disk, menghindari *paralisis birthday problem*.
-- **💾 Stateful Processing (Resume):** Mampu dihentikan (Ctrl+C) dan dilanjutkan kembali tepat di posisi terakhir tanpa menghasilkan file ganda atau password duplikat di file `.txt`.
-- **🧮 Memory-Mapped Files (mmap):** Akses disk yang sangat cepat untuk Bloom Filter tanpa me-load seluruh file ke RAM.
+### System Features:
+- **🎯 Probabilistic Pattern Modeling:** Each pattern has a weight percentage based on security research (e.g., the `word+number` pattern has a 25% probability of appearing).
+- **🌸 Bloom Filter Deduplication:** Uses a highly efficient space-probability algorithm. Capable of checking billions of duplicate passwords using only ~1.8GB of RAM/Disk space, avoiding the *birthday problem paralysis*.
+- **💾 Stateful Processing (Resume):** Can be stopped (Ctrl+C) and resumed exactly from the last position without creating duplicate files or duplicate passwords in the `.txt` file.
+- **🧮 Memory-Mapped Files (mmap):** Extremely fast disk access for the Bloom Filter without loading the entire file into RAM.
 
 ---
 
-## 🔬 15 Pola Perilaku Manusia
+## 🔬 15 Human Behavior Patterns
 
-Generator ini tidak hanya mengacak string, tetapi memanggil fungsi spesifik yang mensimulasikan 15 pola kebiasaan pengguna:
+This generator doesn't just shuffle strings; it calls specific functions that simulate 15 common user habit patterns:
 
-| No | Pola Perilaku | Contoh Output | Proporsi |
-|:--:|---------------|---------------|:--------:|
-| 1 | Kata Dasar + Angka | `dragon123`, `shadow99` | 25.0% |
-| 2 | Kata Dasar + Tahun | `password1998`, `love2005` | 15.0% |
-| 3 | Nama + Angka | `john123`, `sari44` | 12.0% |
+| No | Behavior Pattern | Example Output | Proportion |
+|:--:|------------------|----------------|:----------:|
+| 1 | Base Word + Number | `dragon123`, `shadow99` | 25.0% |
+| 2 | Base Word + Year | `password1998`, `love2005` | 15.0% |
+| 3 | Name + Number | `john123`, `sari44` | 12.0% |
 | 4 | *Keyboard Walking* | `qwerty123`, `asdfgh` | 8.0% |
-| 5 | Numerik Murni | `123456`, `11111111` | 7.0% |
+| 5 | Numeric Only | `123456`, `11111111` | 7.0% |
 | 6 | *Capitalization* | `Dragon123`, `Shadow` | 6.0% |
-| 7 | Kata + Simbol | `password!`, `@dragon` | 5.0% |
+| 7 | Word + Symbol | `password!`, `@dragon` | 5.0% |
 | 8 | *Leet Speak* | `p@ssw0rd`, `h4ck3r` | 4.0% |
-| 9 | Dua Kata Gabungan | `sunmoon`, `darkforest` | 3.5% |
-| 10| Nama + Tahun | `budi1995`, `emma2000` | 3.0% |
-| 11| Frasa Umum | `iloveyou`, `letmein` | 2.5% |
-| 12| Kata Berulang | `catcat`, `lololo` | 2.0% |
-| 13| Kompleks Prediktabel | `Dragon123!`, `Word99@me` | 2.5% |
-| 14| Kata Bahasa Indonesia | `cinta123`, `jakarta99` | 2.5% |
-| 15| Nama + Kata | `johnlove`, `darkrudi` | 2.0% |
+| 9 | Two Words Combined | `sunmoon`, `darkforest` | 3.5% |
+| 10| Name + Year | `budi1995`, `emma2000` | 3.0% |
+| 11| Common Phrases | `iloveyou`, `letmein` | 2.5% |
+| 12| Repeated Words | `catcat`, `lololo` | 2.0% |
+| 13| Predictable Complex | `Dragon123!`, `Word99@me` | 2.5% |
+| 14| Indonesian Words | `cinta123`, `jakarta99` | 2.5% |
+| 15| Name + Word | `johnlove`, `darkrudi` | 2.0% |
 
-*(Proporsi disesuaikan berdasarkan distribusi statistik kebocoran data global)*
+*(Proportions are adjusted based on global data breach statistical distributions)*
 
 ---
 
-## 🚀 Instalasi & Penggunaan
+## 🚀 Installation & Usage
 
-### Prasyarat
-- Python 3.8 atau lebih baru
-- Ruang disk kosong: Minimal ~15 GB (untuk target 1 Miliar password + file sistem)
+### Prerequisites
+- Python 3.8 or higher
+- Free disk space: Minimum ~15 GB (for a 1 Billion password target + system files)
 
-### Menjalankan Generator
+### Running the Generator
 
-**1. Mode Interaktif (Rekomendasi)**
+**1. Interactive Mode (Recommended)**
 ```bash
 python password_generator.py
 ```
-*Sistem akan otomatis mendeteksi apakah ada proses yang pernah terhenti dan menanyakan apakah ingin melanjutkan (Resume) atau memulai baru (Fresh).*
+*The system will automatically detect if there is a previously stopped process and ask whether to Resume or start Fresh.*
 
 **2. Command Line Interface (CLI)**
 ```bash
-# Memulai dari awal (menghapus progress lama)
+# Start from scratch (erases old progress)
 python password_generator.py --fresh
 
-# Melanjutkan proses yang terhenti
+# Resume a stopped process
 python password_generator.py --resume
 
-# Melihat statistik progress saat ini
+# View current progress statistics
 python password_generator.py --status
 
-# Membersihkan semua file output dan temporary
+# Clean up all output and temporary files
 python password_generator.py --clean
 ```
 
-### Konfigurasi
-Anda dapat menyesuaikan target dan perilaku generator di dalam class `Config` pada file `.py`:
+### Configuration
+You can adjust the target and generator behavior inside the `Config` class in the `.py` file:
 ```python
 class Config:
-    TOTAL_PASSWORDS = 100_000_000  # Target jumlah password unik
+    TOTAL_PASSWORDS = 100_000_000  # Target number of unique passwords
     OUTPUT_FILE = "dataset_password_realistis.txt"
-    RANDOM_SEED = 42               # Untuk reproduktibilitas penelitian
-    BLOOM_FPR = 0.001              # False Positive Rate Bloom Filter (0.1%)
+    RANDOM_SEED = 42               # For research reproducibility
+    BLOOM_FPR = 0.001              # Bloom Filter False Positive Rate (0.1%)
 ```
 
 ---
 
-## 📊 Performa & Benchmark
+## 📊 Performance & Benchmark
 
-Pengujian dilakukan pada sistem standar (Consumer-grade Laptop). 
-*(Catatan: Kecepatan sangat bergantung pada *False Positive Rate* duplikat yang dihasilkan oleh luasnya *wordlist* yang digunakan).*
+Testing conducted on a standard system (Consumer-grade Laptop). 
+*(Note: Speed heavily depends on the *False Positive Rate* of duplicates generated by the breadth of the *wordlist* used).*
 
-| Skala Target | Estimasi Waktu | Ukuran File `.txt` | Kebutuhan Disk Total |
-|:------------:|:--------------:|:------------------:|:--------------------:|
-| 1 Juta       | ~30 detik      | ~10 MB             | ~200 MB              |
-| 10 Juta      | ~5 menit       | ~100 MB            | ~500 MB              |
-| 100 Juta     | ~45 menit      | ~1 GB              | ~3 GB                |
-| 1 Miliar     | ~7 jam         | ~10 GB             | ~13 GB               |
+| Target Scale | Estimated Time | `.txt` File Size | Total Disk Needed |
+|:------------:|:--------------:|:-----------------:|:-----------------:|
+| 1 Million    | ~30 seconds    | ~10 MB            | ~200 MB           |
+| 10 Million   | ~5 minutes     | ~100 MB           | ~500 MB           |
+| 100 Million  | ~45 minutes    | ~1 GB             | ~3 GB             |
+| 1 Billion    | ~7 hours       | ~10 GB            | ~13 GB            |
 
-**File yang Dihasilkan:**
-- `dataset_password_realistis.txt` : File utama berisi password unik (1 password per baris).
-- `.bloom_filter.bin` : *(Temporary)* File pendukung deduplikasi (Otomatis terhapus saat selesai).
-- `.generator_state.bin` : *(Temporary)* Checkpoint untuk resume (Otomatis terhapus saat selesai).
+**Generated Files:**
+- `dataset_password_realistis.txt` : The main file containing unique passwords (1 password per line).
+- `.bloom_filter.bin` : *(Temporary)* Deduplication support file (Auto-deleted upon completion).
+- `.generator_state.bin` : *(Temporary)* Checkpoint for resuming (Auto-deleted upon completion).
 
 ---
 
-## 📚 Landasan Akademis
+## 📚 Academic Foundations
 
-Algoritma dan pola dalam riset ini dibangun berdasarkan literatur keamanan siber terkemuka:
+The algorithms and patterns in this research are built upon prominent cybersecurity literature:
 
-1. **NIST SP 800-63B** - *Digital Identity Guidelines* (Mengenai entropi password dan memori manusia).
-2. **Weir et al. (2010)** - *"Using Secret-Sharing for Detecting Compromised Passwords"*. (Mengenai struktur probabilistic context-free grammar untuk password).
-3. **Florêncio & Herley (2007)** - *"A Large-Scale Study of Web Password Habits"*. (Mengenai distribusi panjang dan pengulangan password).
-4. **Bloom, B. H. (1970)** - *Space/Time Trade-offs in Hash Coding with Allowable Errors*. (Dasar teori Bloom Filter yang digunakan dalam deduplikasi).
+1. **NIST SP 800-63B** - *Digital Identity Guidelines* (Regarding password entropy and human memory).
+2. **Weir et al. (2010)** - *"Using Secret-Sharing for Detecting Compromised Passwords"*. (Regarding probabilistic context-free grammar structures for passwords).
+3. **Florêncio & Herley (2007)** - *"A Large-Scale Study of Web Password Habits"*. (Regarding password length distribution and repetition).
+4. **Bloom, B. H. (1970)** - *Space/Time Trade-offs in Hash Coding with Allowable Errors*. (The theoretical foundation of the Bloom Filter used in deduplication).
 
 ---
 
 ## ⚠️ Disclaimer
 
-Proyek dan repository ini dikembangkan **murni untuk keperluan akademis, edukasi, dan riset keamanan defensif** (Tugas Akhir). 
+This project and repository are developed **purely for academic, educational, and defensive security research purposes** (Final Thesis). 
 
-Generator ini **TIDAK** menyimpan, mendistribusikan, atau menggunakan kredensial asli yang bocor. Semua data yang dihasilkan adalah 100% sintetis. Dilarang keras menggunakan tools atau dataset yang dihasilkan untuk aktivitas tidak sah, brute-force akun tanpa izin, atau kegiatan berbahaya lainnya. Gunakan dengan tanggung jawab etis.
+This generator **DOES NOT** store, distribute, or use real leaked credentials. All generated data is 100% synthetic. It is strictly forbidden to use this tool or its generated datasets for unauthorized activities, brute-forcing accounts without permission, or any other malicious endeavors. Use it ethically and responsibly.
 
 ---
 
 <div align="center">
-  <sub>Dibuat dengan 🐍 Python untuk Keperluan Penelitian Keamanan Informasi</sub>
+  <sub>Built with 🐍 Python for Information Security Research Purposes</sub>
 </div>
 ```
