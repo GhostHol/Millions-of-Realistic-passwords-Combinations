@@ -3,16 +3,6 @@
 ```markdown
 # 🛡️ Realistic Human Password Generator (RHPG)
 
-![Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen?style=for-the-badge)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)
-![Purpose](https://img.shields.io/badge/Purpose-Academic_Research-informational?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Educational_Only-orange?style=for-the-badge)
-
-> **High-Scalable Synthetic Dataset Generator**  
-> Building a realistic password dataset based on human cognitive behavior for cybersecurity research purposes.
-
----
-
 ## 📖 Table of Contents
 - [📍 Background](#-background)
 - [🧠 Why "Realistic"?](#-why-realistic)
